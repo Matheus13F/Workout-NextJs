@@ -8,8 +8,6 @@
 [![Forks](https://img.shields.io/github/forks/matheus13f/Workout-NextJs?color=%23ff9000&style=flat-square)](https://github.com/matheus13f/Workout-NextJs/network/members)
 [![Contributors](https://img.shields.io/github/contributors/matheus13f/Workout-NextJs?color=ff9000&style=flat-square)](https://github.com/matheus13f/Workout-NextJs/graphs/contributors)
 
----
-
 # :pushpin: Table of Contents
 
 * [Features](#rocket-features)
