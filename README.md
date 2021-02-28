@@ -62,7 +62,7 @@ or
 
 **Question:** What are the technologies used in this project?
 
-**Answer:** The technologies used in this project are [React JS](https://pt-br.reactjs.org/), [Typescript](https://www.typescriptlang.org/), [Styled Components](https://styled-components.com/) and [Next.JS](https://nextjs.org/)
+**Answer:** The technologies used in this project are [React JS](https://pt-br.reactjs.org/), [Typescript](https://www.typescriptlang.org/) and [Next.JS](https://nextjs.org/)
 
 # :bug: Issues
 
