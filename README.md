@@ -30,6 +30,13 @@
 * complete challenges to level up 
 * manage your time stydy or work
 
+# :framed_picture: UI Documentation
+This project has a UI Documentation of reusable components, allowing to test them individually.
+
+<p align="left">
+   <img src="utils/home.png" />
+</p>
+
 # :construction_worker: Installation
 
 **You need to install [NPM](https://www.npmjs.com/) and [YARN](https://yarnpkg.com/) first, then in order to clone the project via HTTPS, run this command:**
