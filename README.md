@@ -1,6 +1,6 @@
 # Workout (NLW4)
 
-> Manage your study or work time :)
+> Manage your study or work time :) - Application developed during the Rocketseat NLW4 event 
 
  [![Author](https://img.shields.io/badge/author-matheus13f-ff9000?style=flat-square)](https://github.com/matheus13f)
 [![Languages](https://img.shields.io/github/languages/count/matheus13f/Workout-NextJs?color=%23ff9000&style=flat-square)](#)
@@ -29,6 +29,13 @@
 * start a cycle to release challenges 
 * complete challenges to level up 
 * manage your time stydy or work
+
+# :framed_picture: UI Documentation
+This project has a UI Documentation of reusable components, allowing to test them individually.
+
+<p align="left">
+   <img src="Utils/home.png" />
+</p>
 
 # :construction_worker: Installation
 
