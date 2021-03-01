@@ -32,15 +32,12 @@
 .profileContainer div strong form input{
     border: none;
     border-bottom: 1px solid var(--white);
+    border-radius: 5px;
 
     background: transparent;
     color: var(--text);
 
     padding: 5px;
-}
-
-.profileContainer div strong form input:focus{
-    border: 0;    
 }
 
 .profileContainer div strong button{

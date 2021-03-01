@@ -11,22 +11,26 @@ interface IUserGithubProps {
 }
 
 export function Profile() {
-    const [userInput, setUserInput] = useState('Unknown');
-    const [hasUser, setHasUser] = useState(false);
+    const [userInput, setUserInput] = useState(Cookies.get('name') ?? '');
+    const [urlPhoto, setUrlPhoto] = useState(Cookies.get('avatar') ?? 'https://github.githubassets.com/images/modules/logos_page/Octocat.png');
+    const [hasUser, setHasUser] = useState( Boolean(Cookies.get('logged')) ?? false);
     const [dataGithub, setDataGithub] = useState<IUserGithubProps>();
-    const [urlPhoto, setUrlPhoto] = useState('https://github.githubassets.com/images/modules/logos_page/Octocat.png');
 
     useEffect(() => {
         Cookies.set('name', userInput);
         Cookies.set('avatar', urlPhoto);
-    }, [userInput])
+        Cookies.set('logged', String(hasUser));
+    }, [userInput, urlPhoto])
+
 
     const { level } = useContext(ChallengesContext);
 
     async function githubLogin() {
         const response = await fetch(`https://api.github.com/users/${userInput}`);
         const data = await response.json();
+
         if(response.status === 200) {
+            console.log(data);
             setDataGithub(data);
             setUrlPhoto(data.avatar_url);
             setUserInput(data.name);

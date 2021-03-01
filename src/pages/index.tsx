@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { CountdownProvider } from '../context/CountdownContext';
-import { ChallengesContext, ChallengesProviders } from '../context/ChallengesContext';
+import { ChallengesProviders } from '../context/ChallengesContext';
 
 import { CompletedChallenges } from "../components/CompletedChallenges";
 import { Countdown } from "../components/Countdown";
@@ -10,7 +10,6 @@ import { Profile } from "../components/Profile";
 import { ChallengeBox } from "../components/ChallengeBox";
 
 import styles from "../styles/pages/Home.module.css";
-import { useContext } from 'react';
 
 interface IHomeProps {
   level: number;
@@ -19,8 +18,6 @@ interface IHomeProps {
 }
 
 export default function Home(props: IHomeProps) {
-  const { isGithubLogged } = useContext(ChallengesContext);
-
   return (
     <ChallengesProviders 
       level={props.level}
@@ -43,7 +40,14 @@ export default function Home(props: IHomeProps) {
             <div>
               <ChallengeBox/>
             </div>
-         </section>                 
+          </section>
+
+          <footer>
+            <p>Desenvolvido por Matheus Ferreira - 2021</p>
+            <a href="https://www.github.com/matheus13f/" target="_blank">Github</a>
+            <a href="https://www.linkedin.com/in/matheus13f/" target="_blank">Linkedin</a>
+            <a href="https://www.instagram.com/oi_matthew/" target="_blank">Instagram</a>
+          </footer>                 
         </CountdownProvider>        
       </div>
     </ChallengesProviders>

@@ -16,3 +16,17 @@
     gap: 6.25rem;
     align-items: center;
 }
+
+.container footer {
+    display: flex;
+    flex-direction: row;
+    padding-right: 10px;
+}
+
+.container footer a {
+    margin: 0px  10px;
+}
+
+.container footer a:hover {
+    color: var(--purple);
+}
