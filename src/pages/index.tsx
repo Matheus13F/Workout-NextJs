@@ -27,7 +27,7 @@ export default function Home(props: IHomeProps) {
     >
       <div className={styles.container}>
         <Head>
-          <title>Pomostudy</title>
+          <title>PomoLevel</title>
         </Head>
         <ExperienceBar />
 
