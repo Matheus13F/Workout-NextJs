@@ -16,9 +16,7 @@ interface IUserGithubProps {
 }
 
 export function Profile() {
-  const [userInput, setUserInput] = useState(
-    Cookies.get("name") ?? "Digite seu nome"
-  );
+  const [userInput, setUserInput] = useState(Cookies.get("name") ?? "");
   const [hasUser, setHasUser] = useState(
     Boolean(Cookies.get("logged")) ?? false
   );
