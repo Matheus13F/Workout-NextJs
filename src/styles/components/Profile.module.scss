@@ -1,0 +1,57 @@
+.profileContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+
+  gap: 10px;
+}
+
+.profileContainer > div > img {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+}
+
+.profileContainer div main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--title);
+}
+
+.profileContainer div main form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileContainer div main form input {
+  border: none;
+  border-bottom: 1px solid var(--white);
+
+  width: 100%;
+
+  background: transparent;
+  color: var(--text);
+
+  padding: 5px;
+}
+
+.profileContainer div main button {
+  display: flex;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 22px;
+
+  margin-left: 15px;
+}
+
+.profileContainer footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

@@ -1,20 +1,20 @@
-import { useState, useEffect, ReactFragment, useContext } from 'react';
-import { CountdownContext } from '../context/CountdownContext';
-import styles from '../styles/components/Countdown.module.css';
+import { useState, useEffect, ReactFragment, useContext } from "react";
+import { CountdownContext } from "../context/CountdownContext";
+import styles from "../styles/components/Countdown.module.scss";
 
 export function Countdown() {
   const {
-    minutes, 
-    seconds ,
+    minutes,
+    seconds,
     hasFinished,
     isActive,
     startCountdown,
-    resetCountdown
-  } = useContext(CountdownContext);  
+    resetCountdown,
+  } = useContext(CountdownContext);
 
-  const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('');
-  const [secondLeft, secondRigth] = String(seconds).padStart(2, '0').split('');
-  
+  const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("");
+  const [secondLeft, secondRigth] = String(seconds).padStart(2, "0").split("");
+
   return (
     <div>
       <div className={styles.countdownContainer}>
@@ -30,16 +30,13 @@ export function Countdown() {
       </div>
 
       {hasFinished ? (
-        <button 
-          disabled
-          className={styles.countdownButton}       
-        >
+        <button disabled className={styles.countdownButton}>
           Ciclo encerrado!
         </button>
       ) : (
         <>
-          { isActive ? (
-            <button 
+          {isActive ? (
+            <button
               type="button"
               className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
               onClick={resetCountdown}
@@ -47,17 +44,16 @@ export function Countdown() {
               Abandonar ciclo
             </button>
           ) : (
-            <button 
+            <button
               type="button"
               className={styles.countdownButton}
               onClick={startCountdown}
             >
               Iniciar novo ciclo
             </button>
-          ) }
+          )}
         </>
-      ) }
-
+      )}
     </div>
-  )
+  );
 }

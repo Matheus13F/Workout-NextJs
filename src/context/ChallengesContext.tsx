@@ -1,10 +1,18 @@
-import { createContext, useState, ReactNode, useEffect, Dispatch, SetStateAction, useContext } from 'react';
-import Cookies from 'js-cookie';
-import challenges from '../../challenges.json';
-import { LevelUpModal } from '../components/LevelUpModal';
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  useContext,
+} from "react";
+import Cookies from "js-cookie";
+import challenges from "../../challenges.json";
+import { LevelUpModal } from "../components/LevelUpModal";
 
 interface IChallengeProps {
-  type: 'body' | 'eye';
+  type: "body" | "eye";
   description: string;
   amount: number;
 }
@@ -16,15 +24,12 @@ interface IChallengesContextData {
   challengesCompleted: number;
   levelUp: () => void;
   startNewChallenge: () => void;
-  activeChallenge: IChallengeProps; 
+  activeChallenge: IChallengeProps;
   resetChallenge: () => void;
   completeChallenge: () => void;
   closeLevelUpModal: () => void;
-  setUserGithub: Dispatch<SetStateAction<string>>;
-  setAvatarGithub: Dispatch<SetStateAction<string>>;
-  setIsGithubLogged: Dispatch<SetStateAction<boolean>>;
-  userGithub: string;
-  isGithubLogged: boolean;
+  setUserName: Dispatch<SetStateAction<string>>;
+  userName: string;
 }
 
 interface IChallengesProviderProps {
@@ -36,17 +41,22 @@ interface IChallengesProviderProps {
 
 export const ChallengesContext = createContext({} as IChallengesContextData);
 
-export function ChallengesProviders({ children, ...rest }: IChallengesProviderProps) {
+export function ChallengesProviders({
+  children,
+  ...rest
+}: IChallengesProviderProps) {
   const [level, setLevel] = useState(rest.level ?? 1);
-  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
-  const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
+  const [currentExperience, setCurrentExperience] = useState(
+    rest.currentExperience ?? 0
+  );
+  const [challengesCompleted, setChallengesCompleted] = useState(
+    rest.challengesCompleted ?? 0
+  );
 
-  const [activeChallenge, setActiveChallenge] = useState(null)
+  const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
-  const [userGithub, setUserGithub] = useState('teste');
-  const [avatarGithub, setAvatarGithub] = useState('');
-  const [isGithubLogged, setIsGithubLogged] = useState(false);
+  const [userName, setUserName] = useState(Cookies.get("name") ?? "random");
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
@@ -55,10 +65,10 @@ export function ChallengesProviders({ children, ...rest }: IChallengesProviderPr
   }, []);
 
   useEffect(() => {
-    Cookies.set('level', String(level));
-    Cookies.set('currentExperience', String(currentExperience));
-    Cookies.set('challengesCompleted', String(challengesCompleted));
-  }, [level, currentExperience, challengesCompleted])
+    Cookies.set("level", String(level));
+    Cookies.set("currentExperience", String(currentExperience));
+    Cookies.set("challengesCompleted", String(challengesCompleted));
+  }, [level, currentExperience, challengesCompleted]);
 
   function levelUp() {
     setLevel(level + 1);
@@ -75,12 +85,12 @@ export function ChallengesProviders({ children, ...rest }: IChallengesProviderPr
 
     setActiveChallenge(challenge);
 
-    new Audio('/notification.mp3').play();
+    new Audio("/notification.mp3").play();
 
-    if(Notification.permission === 'granted') {
-      new Notification('Novo desafio!!', {
-        body: `Valendo ${challenge.amount} xp!`
-      })
+    if (Notification.permission === "granted") {
+      new Notification("Novo desafio!!", {
+        body: `Valendo ${challenge.amount} xp!`,
+      });
     }
   }
 
@@ -89,7 +99,7 @@ export function ChallengesProviders({ children, ...rest }: IChallengesProviderPr
   }
 
   function completeChallenge() {
-    if(!activeChallenge) {
+    if (!activeChallenge) {
       return;
     }
 
@@ -97,7 +107,7 @@ export function ChallengesProviders({ children, ...rest }: IChallengesProviderPr
 
     let finalExperience = currentExperience + amount;
 
-    if(finalExperience >= experienceToNextLevel) {
+    if (finalExperience >= experienceToNextLevel) {
       finalExperience = finalExperience - experienceToNextLevel;
       levelUp();
     }
@@ -108,26 +118,24 @@ export function ChallengesProviders({ children, ...rest }: IChallengesProviderPr
   }
 
   return (
-    <ChallengesContext.Provider value={{
-      level, 
-      levelUp,
-      currentExperience,
-      experienceToNextLevel,
-      challengesCompleted,
-      startNewChallenge,
-      activeChallenge,
-      resetChallenge,
-      completeChallenge,
-      closeLevelUpModal,
-      setIsGithubLogged,
-      setUserGithub,
-      setAvatarGithub,
-      userGithub,
-      isGithubLogged
-    }}>
+    <ChallengesContext.Provider
+      value={{
+        level,
+        levelUp,
+        currentExperience,
+        experienceToNextLevel,
+        challengesCompleted,
+        startNewChallenge,
+        activeChallenge,
+        resetChallenge,
+        completeChallenge,
+        closeLevelUpModal,
+        setUserName,
+        userName,
+      }}
+    >
       {children}
-      {isLevelUpModalOpen && <LevelUpModal/>}
+      {isLevelUpModalOpen && <LevelUpModal />}
     </ChallengesContext.Provider>
-  )
+  );
 }
-
