@@ -56,7 +56,7 @@ export function ChallengesProviders({
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
-  const [userName, setUserName] = useState(Cookies.get("name") ?? "random");
+  const [userName, setUserName] = useState(Cookies.get("name") ?? "");
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 

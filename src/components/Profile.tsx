@@ -1,63 +1,38 @@
-import { FormEvent, useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Cookies from "js-cookie";
-import {
-  FiLogIn,
-  FiEdit,
-  FiArrowDownRight,
-  FiArrowRight,
-} from "react-icons/fi";
-
 import { ChallengesContext } from "../context/ChallengesContext";
 import style from "../styles/components/Profile.module.scss";
 
-interface IUserGithubProps {
-  name: string;
-  avatar_url: string;
-}
-
 export function Profile() {
-  const [userInput, setUserInput] = useState(Cookies.get("name") ?? "");
-  const [hasUser, setHasUser] = useState(
-    Boolean(Cookies.get("logged")) ?? false
-  );
-  const [dataGithub, setDataGithub] = useState<IUserGithubProps>();
+  const { level, setUserName, userName } = useContext(ChallengesContext);
 
   useEffect(() => {
-    Cookies.set("name", userInput);
-    Cookies.set("logged", String(hasUser));
-  }, [userInput]);
-
-  const { level, setUserName } = useContext(ChallengesContext);
-
-  function handleChangeName(event: FormEvent) {
-    event.preventDefault();
-    setUserName(userInput);
-    Cookies.set("name", userInput);
-  }
+    Cookies.set("name", userName);
+  }, [userName]);
 
   return (
     <div className={style.profileContainer}>
       <div>
         <img
-          src={`https://avatars.dicebear.com/api/adventurer/${userInput}.svg`}
+          src={`https://avatars.dicebear.com/api/adventurer/${userName}.svg`}
           alt="Dicebear Avatar"
         />
       </div>
       <div>
         <main>
-          <form onSubmit={handleChangeName}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
             <input
               required
               type="text"
-              value={userInput}
+              value={userName}
               placeholder="Digite seu nome."
-              onChange={(e) => setUserInput(e.target.value)}
+              onChange={(e) => setUserName(e.target.value)}
               maxLength={20}
             />
-            <button type="submit">
-              {" "}
-              <FiArrowRight />
-            </button>
           </form>
         </main>
         <footer>
