@@ -68,13 +68,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { level, currentExperience, challengesCompleted, name, tasks } =
     ctx.req.cookies;
 
+  const serialized = JSON.parse(tasks);
+
   return {
     props: {
       level: Number(level),
       currentExperience: Number(currentExperience),
       challengesCompleted: Number(challengesCompleted),
       name,
-      tasks: JSON.parse(tasks),
+      tasks: serialized,
     },
   };
 };
