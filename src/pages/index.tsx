@@ -12,11 +12,20 @@ import { ChallengeBox } from "../components/ChallengeBox";
 import styles from "../styles/pages/Home.module.scss";
 import { Footer } from "../components/Footer";
 import LandingPage from "../components/LandingPage";
+import Cookies from "js-cookie";
+
+interface Task {
+  id: number;
+  title: string;
+  isComplete: boolean;
+}
 
 interface IHomeProps {
   level: number;
   currentExperience: number;
   challengesCompleted: number;
+  name: string;
+  tasks: Task[];
 }
 
 export default function Home(props: IHomeProps) {
@@ -25,6 +34,8 @@ export default function Home(props: IHomeProps) {
       level={props.level}
       currentExperience={props.currentExperience}
       challengesCompleted={props.challengesCompleted}
+      name={props.name}
+      tasks={props.tasks}
     >
       <div className={styles.container}>
         <Head>
@@ -54,13 +65,16 @@ export default function Home(props: IHomeProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies;
+  const { level, currentExperience, challengesCompleted, name, tasks } =
+    ctx.req.cookies;
 
   return {
     props: {
       level: Number(level),
       currentExperience: Number(currentExperience),
       challengesCompleted: Number(challengesCompleted),
+      name,
+      tasks: JSON.parse(tasks),
     },
   };
 };

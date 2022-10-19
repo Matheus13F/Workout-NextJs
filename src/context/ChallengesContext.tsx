@@ -29,6 +29,8 @@ interface IChallengesContextData {
   closeLevelUpModal: () => void;
   setUserName: Dispatch<SetStateAction<string>>;
   userName: string;
+  tasks: Task[];
+  setTasks: Dispatch<SetStateAction<Task[]>>;
 }
 
 interface IChallengesProviderProps {
@@ -36,6 +38,14 @@ interface IChallengesProviderProps {
   level: number;
   currentExperience: number;
   challengesCompleted: number;
+  name: string;
+  tasks: Task[];
+}
+
+interface Task {
+  id: number;
+  title: string;
+  isComplete: boolean;
 }
 
 export const ChallengesContext = createContext({} as IChallengesContextData);
@@ -55,9 +65,11 @@ export function ChallengesProviders({
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
 
-  const [userName, setUserName] = useState(Cookies.get("name") ?? "");
+  const [userName, setUserName] = useState(rest.name ?? "");
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
+
+  const [tasks, setTasks] = useState<Task[]>(rest.tasks ?? []);
 
   useEffect(() => {
     Notification.requestPermission();
@@ -67,7 +79,8 @@ export function ChallengesProviders({
     Cookies.set("level", String(level));
     Cookies.set("currentExperience", String(currentExperience));
     Cookies.set("challengesCompleted", String(challengesCompleted));
-  }, [level, currentExperience, challengesCompleted]);
+    Cookies.set("tasks", tasks);
+  }, [level, currentExperience, challengesCompleted, tasks]);
 
   function levelUp() {
     setLevel(level + 1);
@@ -131,6 +144,8 @@ export function ChallengesProviders({
         closeLevelUpModal,
         setUserName,
         userName,
+        tasks,
+        setTasks,
       }}
     >
       {children}

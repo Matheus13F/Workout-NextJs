@@ -1,17 +1,13 @@
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FiTrash, FiCheckSquare } from "react-icons/fi";
+import { ChallengesContext } from "../context/ChallengesContext";
 import styles from "../styles/components/Tasklist.module.scss";
 
-interface Task {
-  id: number;
-  title: string;
-  isComplete: boolean;
-}
-
 export function TaskList() {
-  const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
+
+  const { tasks, setTasks } = useContext(ChallengesContext);
 
   function handleCreateNewTask() {
     if (!newTaskTitle) return;
@@ -23,7 +19,6 @@ export function TaskList() {
     };
 
     setTasks((oldTask) => [...oldTask, newTask]);
-    Cookies.set("Tasks", tasks);
     setNewTaskTitle("");
   }
 
@@ -38,20 +33,12 @@ export function TaskList() {
     );
 
     setTasks(filteredTask);
-    Cookies.set("Tasks", filteredTask);
   }
 
   function handleRemoveTask(id: number) {
     const removedTask = tasks.filter((taskItems) => taskItems.id !== id);
     setTasks(removedTask);
-    Cookies.set("Tasks", removedTask);
   }
-
-  useEffect(() => {
-    const searcTask = Cookies.getJSON("Tasks");
-    setTasks(searcTask);
-    console.log(tasks);
-  }, []);
 
   return (
     <div className={styles.taskListContainer}>
