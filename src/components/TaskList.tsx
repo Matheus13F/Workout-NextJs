@@ -76,7 +76,7 @@ export function TaskList() {
         </div>
       </header>
 
-      {tasks.length !== 0 ? (
+      {tasks ? (
         <main className={styles.contentContainer}>
           <ul>
             {tasks.map((task) => (
