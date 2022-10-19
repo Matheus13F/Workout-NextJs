@@ -1,0 +1,29 @@
+.landingPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    text-align: justify;
+    span {
+      color: var(--purple);
+    }
+    font-size: 0.9rem;
+  }
+
+  img {
+    max-width: 450px;
+    max-height: 450px;
+  }
+
+  h1,
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}

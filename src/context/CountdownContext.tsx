@@ -1,6 +1,8 @@
 import {
   createContext,
+  Dispatch,
   ReactNode,
+  SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -15,6 +17,8 @@ interface ICountdownContextData {
   isActive: boolean;
   startCountdown: () => void;
   resetCountdown: () => void;
+  isTodoList: boolean;
+  setIsTodoList: Dispatch<SetStateAction<boolean>>;
 }
 
 interface ICountdownProviderProps {
@@ -31,6 +35,7 @@ export function CountdownProvider({ children }: ICountdownProviderProps) {
   const [time, setTime] = useState(25 * 60);
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
+  const [isTodoList, setIsTodoList] = useState(false);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -53,6 +58,7 @@ export function CountdownProvider({ children }: ICountdownProviderProps) {
       }, 1000);
     } else if (isActive && time === 0) {
       setHasFinished(true);
+      setIsTodoList(false);
       setIsActive(false);
       startNewChallenge();
     }
@@ -67,6 +73,8 @@ export function CountdownProvider({ children }: ICountdownProviderProps) {
         isActive,
         startCountdown,
         resetCountdown,
+        isTodoList,
+        setIsTodoList,
       }}
     >
       {children}

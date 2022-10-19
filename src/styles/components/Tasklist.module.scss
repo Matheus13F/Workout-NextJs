@@ -1,0 +1,190 @@
+.taskListContainer {
+  height: 540px;
+  overflow-y: scroll;
+
+  background: var(--white);
+  border-radius: 5px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+  padding: 0px 1.2rem;
+  padding-bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: var(--white);
+    padding: 1rem 0;
+    z-index: 999;
+
+    h2 {
+      color: var(--text);
+      font-size: 1.2rem;
+    }
+
+    .inputGroup {
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+      font-size: 16px;
+
+      input {
+        width: 100%;
+        background: var(--background);
+        border: 0;
+        color: var(--text);
+        padding: 0.75rem 1.2rem;
+        border-radius: 8px;
+        border: 0;
+
+        &::placeholder {
+          color: var(--text-light);
+        }
+      }
+
+      button {
+        font-weight: 600;
+        border-radius: 8px;
+        border: 0;
+        background: var(--purple);
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        padding: 14px;
+        transition: filter 0.2s;
+
+        margin-left: 0.5rem;
+
+        &:hover {
+          filter: brightness(0.95);
+        }
+      }
+    }
+  }
+
+  .contentContainer {
+    margin-top: 1rem;
+
+    ul {
+      list-style: none;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ebebeb;
+        padding: 1rem 0;
+
+        div {
+          display: flex;
+          width: inherit;
+          align-items: center;
+          gap: 0.8rem;
+          outline: 0;
+          width: 300px;
+          overflow: hidden;
+          text-overflow: ellipsis ellipsis;
+
+          .completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+          }
+
+          .checkboxContainer {
+            display: block;
+            position: relative;
+            padding-left: 14px;
+            margin-bottom: 18px;
+
+            input {
+              position: absolute;
+              opacity: 0;
+              cursor: pointer;
+              height: 0;
+              width: 0;
+
+              &:checked {
+                & ~ .checkmark {
+                  background-color: var(--purple);
+                }
+
+                & ~ .checkmark:after {
+                  display: block;
+                }
+              }
+            }
+
+            .checkmark {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 16px;
+              height: 16px;
+              background-color: var(--background);
+              border-radius: 2px;
+
+              &:after {
+                content: "";
+                position: absolute;
+                display: none;
+                left: 6px;
+                top: 3px;
+                width: 3px;
+                height: 6px;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+              }
+            }
+          }
+        }
+
+        button {
+          background: transparent;
+          border: 0;
+          margin-left: 0.5rem;
+
+          svg {
+            color: var(--red);
+          }
+
+          &:hover {
+            svg {
+              filter: brightness(0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.taskNotActive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.taskNotActive strong {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.taskNotActive p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.4;
+  max-width: 70%;
+  margin-top: 3rem;
+}

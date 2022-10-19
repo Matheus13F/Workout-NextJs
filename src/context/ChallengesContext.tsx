@@ -5,7 +5,6 @@ import {
   useEffect,
   Dispatch,
   SetStateAction,
-  useContext,
 } from "react";
 import Cookies from "js-cookie";
 import challenges from "../../challenges.json";

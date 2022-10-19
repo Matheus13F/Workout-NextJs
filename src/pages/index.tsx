@@ -11,6 +11,7 @@ import { ChallengeBox } from "../components/ChallengeBox";
 
 import styles from "../styles/pages/Home.module.scss";
 import { Footer } from "../components/Footer";
+import LandingPage from "../components/LandingPage";
 
 interface IHomeProps {
   level: number;
@@ -42,9 +43,11 @@ export default function Home(props: IHomeProps) {
               <ChallengeBox />
             </div>
           </section>
-
-          <Footer />
         </CountdownProvider>
+      </div>
+      <div className={`${styles.container} ${styles.footer}`}>
+        <LandingPage />
+        <Footer />
       </div>
     </ChallengesProviders>
   );
