@@ -50,7 +50,7 @@ export function TaskList() {
   useEffect(() => {
     const searcTask = Cookies.getJSON("Tasks");
     setTasks(searcTask);
-    console.log("renderizou");
+    console.log(tasks);
   }, []);
 
   return (
@@ -76,7 +76,7 @@ export function TaskList() {
         </div>
       </header>
 
-      {tasks ? (
+      {tasks.length !== 0 ? (
         <main className={styles.contentContainer}>
           <ul>
             {tasks.map((task) => (
