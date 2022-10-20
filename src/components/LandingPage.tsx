@@ -29,9 +29,9 @@ export default function LandingPage() {
       </ul>
       <p>
         O <span>Pomolevel</span> elevou essa técnica ao próximo nível, dando a
-        você a oportunidade de completar desafios a cada ciclo completo! Assim
-        que completo você ganha experiência, sobe de level e deixa o método de
-        Pomodoro muito mais interessante e divertido!
+        você a oportunidade de completar desafios a cada ciclo finalizado! Assim
+        você ganha experiência, sobe de level e deixa o método de Pomodoro muito
+        mais interessante e divertido!
       </p>
     </div>
   );

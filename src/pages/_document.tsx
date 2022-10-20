@@ -5,7 +5,7 @@ export default class MyDocuments extends Document {
     return (
       <Html>
         <Head>
-          <link rel="shortcut icon" href="/favicon/favicon.ico" />
+          <link rel="shortcut icon" href="/icons/logoweb.svg" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Rajdhani:wght@500;600&display=swap"
