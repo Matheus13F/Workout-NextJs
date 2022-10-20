@@ -51,7 +51,7 @@ export function TaskList() {
             placeholder="Nova Tarefa"
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
-            maxLength={28}
+            maxLength={25}
           />
           <button
             type="submit"
@@ -60,6 +60,9 @@ export function TaskList() {
           >
             <FiCheckSquare size={16} color="#fff" />
           </button>
+          {newTaskTitle.length > 24 && (
+            <span className={styles.maxCaracter}>Maximo 25 caracteres.</span>
+          )}
         </div>
       </header>
 
