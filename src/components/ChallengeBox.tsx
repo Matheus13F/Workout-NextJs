@@ -30,9 +30,9 @@ export function ChallengeBox() {
   return (
     <>
       <div className={styles.buttonSwitch}>
-        <button onClick={handleSwitch}>
+        <span onClick={handleSwitch}>
           <HiSwitchHorizontal /> {isTodoList ? "Desafios" : "Lista de Tarefas"}
-        </button>
+        </span>
       </div>
       {isTodoList ? (
         <TaskList />

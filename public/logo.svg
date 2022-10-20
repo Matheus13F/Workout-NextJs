@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="723" height="179" viewBox="0 0 723 179">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 58.333px;
+        fill: #fff;
+        font-family: Arial;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #ffc34d;
+      }
+
+      .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill: #eba417;
+      }
+    </style>
+  </defs>
+  <text id="Pomolevel" class="cls-1" transform="translate(187.203 134.154) scale(1.756)">Pomolevel</text>
+  <path id="Triangle_1" data-name="Triangle 1" class="cls-2" d="M84,33l75.344,130.5H8.656Z"/>
+  <path id="Triangle_1_copy" data-name="Triangle 1 copy" class="cls-3" d="M85,8l75.344,130.5H9.656Z"/>
+</svg>
