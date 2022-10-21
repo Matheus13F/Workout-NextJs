@@ -30,6 +30,8 @@
     }
 
     .inputGroup {
+      width: 100%;
+
       display: flex;
       gap: 0.25rem;
       align-items: center;
@@ -178,6 +180,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  img {
+    max-width: 300px;
+  }
 }
 
 .taskNotActive strong {
@@ -192,5 +198,5 @@
   align-items: center;
   line-height: 1.4;
   max-width: 70%;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }

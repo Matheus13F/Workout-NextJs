@@ -43,8 +43,6 @@ export function TaskList() {
   return (
     <div className={styles.taskListContainer}>
       <header>
-        <h2>Minhas Tarefas</h2>
-
         <div className={styles.inputGroup}>
           <input
             type="text"
@@ -99,9 +97,10 @@ export function TaskList() {
           </ul>
         </main>
       ) : (
-        <div className={styles.challengeNotActive}>
+        <div className={styles.taskNotActive}>
           <strong> Crie a sua lista de tarefas </strong>
           <p>Adicione um novo item</p>
+          <img src="/notask.svg" alt="lista de tarefas" />
         </div>
       )}
     </div>
