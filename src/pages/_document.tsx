@@ -11,6 +11,7 @@ export default class MyDocuments extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Rajdhani:wght@500;600&display=swap"
             rel="stylesheet"
           />
+          <meta name="google-site-verification" content="Jh3KmIzmEL9lwcd_XfNK-NqqPu2b1JdnthjUxg46fKM" />
         </Head>
         <body>
           <Main />
