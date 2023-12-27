@@ -14,7 +14,7 @@ export function Profile() {
     <div className={style.profileContainer}>
       <div>
         <img
-          src={`https://avatars.dicebear.com/api/adventurer/${userName}.svg`}
+          src={`https://api.dicebear.com/7.x/adventurer/svg?seed${userName}`}
           alt="Dicebear Avatar"
         />
       </div>
